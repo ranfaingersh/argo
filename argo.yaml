@@ -59,7 +59,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your/repo.git   # 🔄 replace with your repo if you want GitOps
+    repoURL: https://github.com/orenhandel/argo.git   # 🔄 replace with your repo if you want GitOps
     path: manifests
     targetRevision: main
   destination:
