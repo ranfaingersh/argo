@@ -36,6 +36,8 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: web
   namespace: demo
+  annotations:
+    oren/oren: "test"
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -49,7 +51,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 60
+          averageUtilization: 20
 # ---
 # apiVersion: autoscaling/v1
 # kind: HorizontalPodAutoscaler
