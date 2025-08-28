@@ -49,7 +49,7 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 60
 # ---
 # apiVersion: autoscaling/v1
 # kind: HorizontalPodAutoscaler
