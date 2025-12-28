@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: wal-auth-v2
+  name: wal-auth-v3
   namespace: wal-test
 spec:
   replicas: 2
@@ -23,5 +23,5 @@ spec:
   workloadRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: wal-auth-v2
+    name: wal-auth-v3
 

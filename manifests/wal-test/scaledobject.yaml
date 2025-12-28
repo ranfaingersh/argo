@@ -1,19 +1,19 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
-  name: wal-auth-v2-scaler
+  name: wal-auth-v3-scaler
   namespace: wal-test
 spec:
   scaleTargetRef:
     apiVersion: argoproj.io/v1alpha1
     kind: Rollout
-    name: wal-auth-v2
-  minReplicaCount: 2
+    name: wal-auth-v3
+  minReplicaCount: 1
   maxReplicaCount: 6
   cooldownPeriod: 300
   advanced:
     horizontalPodAutoscalerConfig:
-      name: wal-auth-v2
+      name: wal-auth-v3
   triggers:
   - type: memory
     metricType: Utilization
