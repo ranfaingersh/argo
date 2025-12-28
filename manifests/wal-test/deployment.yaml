@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-wal-authorization
+  name: wal-auth-v2
   namespace: wal-test
   labels:
-    app: wal-authorization
+    app: wal-auth-v2
     env: staging
 spec:
   replicas: 0
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: wal-authorization
+      app: wal-auth-v2
       env: staging
   strategy:
     rollingUpdate:
@@ -21,11 +21,11 @@ spec:
   template:
     metadata:
       labels:
-        app: wal-authorization
+        app: wal-auth-v2
         env: staging
     spec:
       containers:
-      - name: wal-authorization
+      - name: wal-auth-v2
         image: nginx:1.25
         ports:
         - containerPort: 80

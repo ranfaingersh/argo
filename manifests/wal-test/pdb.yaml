@@ -1,15 +1,15 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: test-wal-authorization
+  name: wal-auth-v2
   namespace: wal-test
   labels:
-    app: wal-authorization
+    app: wal-auth-v2
     env: staging
 spec:
   maxUnavailable: 35%
   selector:
     matchLabels:
-      app: wal-authorization
+      app: wal-auth-v2
       env: staging
 
