@@ -1,0 +1,26 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: test-wal-authorization-scaler
+  namespace: wal-test
+spec:
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: test-wal-authorization
+  minReplicaCount: 2
+  maxReplicaCount: 6
+  cooldownPeriod: 300
+  advanced:
+    horizontalPodAutoscalerConfig:
+      name: test-wal-authorization
+  triggers:
+  - type: memory
+    metricType: Utilization
+    metadata:
+      value: "70"
+  - type: cpu
+    metricType: Utilization
+    metadata:
+      value: "80"
+
