@@ -1,0 +1,15 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: check-do-v7
+  namespace: monday-check
+  labels:
+    app: check-do-v7
+    env: staging
+spec:
+  maxUnavailable: 35%
+  selector:
+    matchLabels:
+      app: check-do-v7
+      env: staging
+

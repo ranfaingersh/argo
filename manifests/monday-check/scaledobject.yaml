@@ -1,0 +1,26 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: check-do-v7-scaler
+  namespace: monday-check
+spec:
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: check-do-v7
+  minReplicaCount: 3
+  maxReplicaCount: 6
+  cooldownPeriod: 300
+  advanced:
+    horizontalPodAutoscalerConfig:
+      name: check-do-v7
+  triggers:
+  - type: memory
+    metricType: Utilization
+    metadata:
+      value: "70"
+  - type: cpu
+    metricType: Utilization
+    metadata:
+      value: "80"
+

@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: check-do-v7
+  namespace: monday-check
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  strategy:
+    canary:
+      canaryMetadata:
+        annotations:
+          role: canary
+        labels:
+          role: canary
+      stableMetadata:
+        annotations:
+          role: stable
+        labels:
+          role: stable
+      maxSurge: 25%
+      maxUnavailable: 25%
+  workloadRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: check-do-v7
+
